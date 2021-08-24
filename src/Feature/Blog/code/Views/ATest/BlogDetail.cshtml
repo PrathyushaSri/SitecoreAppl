@@ -1,0 +1,54 @@
+﻿@{
+    var item = Sitecore.Context.Database.GetItem("{E64BF86C-78D5-4986-BBC0-318B98A17A65}");
+    var titl = Sitecore.Context.Database.GetItem("{9FB3773C-50A0-439F-95E0-49E413D4A7F5}");
+}
+@model Sitecore.Data.Items.Item
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="assets/css/bootstrap-themed.min.css">
+    <link rel="stylesheet" href="assets/css/blogsite.css">
+
+    <title>@Html.Sitecore().Field("Title", titl)</title>
+
+</head>
+<main role="main" class="container blog-post-detail">
+    <div class="row">
+        <div class="blog-post-detail-card card col-lg-12">
+            @Html.Sitecore().Field("ArticleLargeImage", Model)
+            <div class="card-body bg-light">
+                <strong class="d-inline-block mb-2 text-success">@Html.Sitecore().Field("Category", Model) </strong>
+                <h3 class="card-title">@Html.Sitecore().Field("Title", Model)</h3>
+                <div class="mb-1 text-muted">@Html.Sitecore().Field("PostedDate", Model)</div>
+                <p>@Html.Sitecore().Field("LongDescription", Model)</p>
+                <div class="blog-detail-tag-list">
+                    <span class="read-more-heading">@Html.Sitecore().Field("ArticleReadMoreLabel", Model) </span>
+                    @{
+                        var itemm = Sitecore.Context.Database.GetItem("{E64BF86C-78D5-4986-BBC0-318B98A17A65}");
+                        Sitecore.Data.Fields.MultilistField multilistField = itemm.Fields["Tags"];
+                        if (multilistField != null)
+                        {
+                            foreach (Sitecore.Data.Items.Item city in multilistField.GetItems())
+                            {
+
+                                <a class="btn btn-info" href="#" role="button">@city.Name</a>
+                            }
+                        }
+                    }
+                    @*<a class="btn btn-info" href="#" role="button">Tag</a>
+        <a class="btn btn-info" href="#" role="button">Super Extra Long Tag</a>
+        <a class="btn btn-info" href="#" role="button">Extra Long Tag</a>*@
+
+
+                </div>
+            </div>
+        </div>
+
+
+
+
+    </div>
+</main>

@@ -1,0 +1,44 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31515.178
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Configuration", "Configuration", "{FEC48379-D27F-48E0-93B6-EFEF3A6490EE}"
+	ProjectSection(SolutionItems) = preProject
+		gulp-config.js = gulp-config.js
+		gulpfile.js = gulpfile.js
+		package.json = package.json
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Feature", "Feature", "{F9735D94-DF4C-4A7E-8F7B-3695D9281182}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Project", "Project", "{9FE1AE6E-95D7-4D28-A869-4C5C65ECA157}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Foundation", "Foundation", "{13769374-0CA5-412A-9CD9-695DA91EDC5C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Blog", "Blog", "{5272E37E-2E71-4FBC-BB88-0762A797CC22}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SitecoreAppl.Feature.Blog", "src\Feature\Blog\code\SitecoreAppl.Feature.Blog.csproj", "{46DA2A28-BC0A-4AF7-96BD-71C153C54FAB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{46DA2A28-BC0A-4AF7-96BD-71C153C54FAB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46DA2A28-BC0A-4AF7-96BD-71C153C54FAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46DA2A28-BC0A-4AF7-96BD-71C153C54FAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46DA2A28-BC0A-4AF7-96BD-71C153C54FAB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5272E37E-2E71-4FBC-BB88-0762A797CC22} = {F9735D94-DF4C-4A7E-8F7B-3695D9281182}
+		{46DA2A28-BC0A-4AF7-96BD-71C153C54FAB} = {5272E37E-2E71-4FBC-BB88-0762A797CC22}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F4C43C89-2DB4-4F42-8AE9-71942AFEAA29}
+	EndGlobalSection
+EndGlobal

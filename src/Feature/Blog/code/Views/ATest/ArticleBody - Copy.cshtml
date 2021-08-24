@@ -1,0 +1,107 @@
+﻿@{
+    var item = Sitecore.Context.Database.GetItem("{9FB3773C-50A0-439F-95E0-49E413D4A7F5}");
+    var itemdata = Sitecore.Context.Database.GetItem("{0C08CE22-0631-4371-80A1-72A593369509}");
+    string urlval = Sitecore.Links.LinkManager.GetItemUrl(itemdata);
+    var hrft = Sitecore.Context.Database.GetItem("{E699DF65-6F0B-4AB4-B2D1-1F8B9162FD44}");
+
+}
+@model SitecoreAppl.Feature.Blog.Models.SearchResult
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="assets/css/bootstrap-themed.min.css">
+    <link rel="stylesheet" href="assets/css/blogsite.css">
+
+    <title>@Html.Sitecore().Field("Title", hrft)</title>
+
+</head>
+
+<body>
+
+    <header>
+        <div class="container">
+            <div class="jumbotron text-white bg-primary">
+                <h1 class="display-3"> @Html.Sitecore().Field("HeaderTitle", hrft)</h1>
+                <p class="lead">@Html.Sitecore().Field("HeaderSubTitle", hrft)</p>
+            </div>
+        </div><!-- /.container -->
+    </header>
+
+</body>
+<main role="main" class="container blog-posts">
+    @*@using (Html.BeginForm("ArticleBody", "ATest", FormMethod.Post))
+        {*@
+    @using (Html.BeginRouteForm(Sitecore.Mvc.Configuration.MvcSettings.SitecoreRouteName, FormMethod.Post))
+    {
+        @Html.Sitecore().FormHandler("ATest", "ArticleBody")
+
+        <div class="main-search">
+            <div class="input-group">
+                @Html.TextBox("searchInput", "", new { @class = "form-control", placeholder = @Html.Sitecore().Field("HighLighterText", item), autocomplete = "off" })
+                <div class="input-group-append">
+
+                    <input type="submit" id="btnSearch" class="btn btn-dark" value=@Html.Sitecore().Field("ButtonLabel", item) />
+
+
+                </div>
+            </div>
+        </div>
+
+
+        <br>
+    }
+
+    <div class="row" id="one">
+        @{
+
+
+            Sitecore.Data.Items.Item[] itemmm = ViewBag.multi;
+            foreach (Sitecore.Data.Items.Item city in itemmm)
+            {
+
+                int i = 0;
+                <div class="blog-post-card card col-lg-4 col-md-6">
+                    @Html.Sitecore().Field("ArticleSmallImage", city, new { w = 350, h = 233 })
+                    <div class="card-body bg-light">
+                        <strong class="d-inline-block mb-2 text-success">@Html.Sitecore().Field("Category", city) </strong>
+                        <h3 class="card-title">@Html.Sitecore().Field("Title", city)</h3>
+                        <div class="mb-1 text-muted">@Html.Sitecore().Field("PostedDate", city)</div>
+                        <p>@Html.Sitecore().Field("ShortDescription", city)</p>
+
+                        @*<a href="@urlval" class="btn btn-warning btn-block">@Html.Sitecore().Field("PostCardButtonText", item)</a>*@
+
+                        @using (Html.BeginForm("Details", "ATest", new { itemid = @Html.Sitecore().Field("Id", city) },FormMethod.Post))
+                        {
+                            
+                             @*<button type="button" class="btn btn-warning btn-block" id="btnreadon">@Html.Sitecore().Field("PostCardButtonText", item)</button>*@
+                            <input type="submit" id="read" class="btn btn-warning btn-block" value=@Html.Sitecore().Field("PostCardButtonText", item) />
+
+                        }
+                    </div>
+                </div>
+
+                i++;
+            }
+
+
+
+
+        }
+
+
+    </div>
+
+
+</main>
+<Footer>
+    <div class="container">
+        <div class="text-white bg-primary">
+            <p class="lead">@Html.Sitecore().Field("Copyright", hrft)</p>
+        </div>
+    </div>
+</Footer>
+
+

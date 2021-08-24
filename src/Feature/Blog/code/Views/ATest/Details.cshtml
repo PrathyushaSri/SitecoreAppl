@@ -1,0 +1,72 @@
+﻿
+@model Sitecore.Data.Items.Item
+@{
+    var item = Sitecore.Context.Database.GetItem("{9FB3773C-50A0-439F-95E0-49E413D4A7F5}");
+    var hrft = Sitecore.Context.Database.GetItem("{E699DF65-6F0B-4AB4-B2D1-1F8B9162FD44}");
+
+}
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="~/assets/css/bootstrap-themed.min.css">
+    <link rel="stylesheet" href="~/assets/css/blogsite.css">
+
+    <title>@Html.Sitecore().Field("Title", hrft)</title>
+
+</head>
+
+<header>
+    <div class="container">
+        <div class="jumbotron text-white bg-primary">
+            <h1 class="display-3"> @Html.Sitecore().Field("HeaderTitle", hrft)</h1>
+            <p class="lead">@Html.Sitecore().Field("HeaderSubTitle", hrft)</p>
+        </div>
+    </div><!-- /.container -->
+</header>
+
+<main role="main" class="container blog-post-detail">
+    <div class="row">
+        <div class="blog-post-detail-card card col-lg-12">
+            
+            @Html.Sitecore().Field("ArticleLargeImage", Model, new { @class = "card-img-top" })
+            <div class="card-body bg-light">
+                <strong class="d-inline-block mb-2 text-success">@Html.Sitecore().Field("Category", Model) </strong>
+                <h3 class="card-title">@Html.Sitecore().Field("Title", Model)</h3>
+                <div class="mb-1 text-muted">@Html.Sitecore().Field("PostedDate", Model)</div>
+                <p>@Html.Sitecore().Field("LongDescription", Model)</p>
+                <div class="blog-detail-tag-list">
+                    <span class="read-more-heading">@Html.Sitecore().Field("ArticleReadMoreLabel", Model) </span>
+                    @{
+                        var itemm = Sitecore.Context.Database.GetItem("{0C08CE22-0631-4371-80A1-72A593369509}");
+                        Sitecore.Data.Fields.MultilistField multilistField = itemm.Fields["Tags"];
+                        if (multilistField != null)
+                        {
+                            foreach (Sitecore.Data.Items.Item city in multilistField.GetItems())
+                            {
+
+                                <a class="btn btn-info" href="#" role="button">@city.Name</a>
+                            }
+                        }
+                    }
+
+
+                </div>
+            </div>
+        </div>
+
+
+
+
+    </div>
+</main>
+<Footer>
+    <div class="container">
+        <div class="text-white bg-primary">
+            <p class="lead">@Html.Sitecore().Field("Copyright", hrft)</p>
+        </div>
+    </div>
+</Footer>
